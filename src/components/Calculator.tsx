@@ -13,12 +13,32 @@ export default function Calculator({ }) {
     // STATE
     const { state, setters }: StateType = useContext(MainContext)
     const [targets, setTargets] = useState({ stoploss: "", takeProfit: "" , pipsToRisk: 0, pipsToProfit: 0})
+    const [symbol, setSymbol] = useState<string>("")
+    const [quantity, setQuantity] = useState(0)
+    const [riskPercent, setRiskPercent] = useState(state.riskPercent)
+    const [ratio, setRatio] = useState(state.ratio)
+    const [fillPrice, setFillPrice] = useState(0)
+    const [direction, setDirection] = useState("LONG")
+
 
     // EVENTS
     const handleSubmit = (e: React.SyntheticEvent): void => {
         e.preventDefault();
         console.log("SUBMIT")
 
+    }
+
+    const handleSymbolChange = (e: React.SyntheticEvent) => {
+        const sym = (e.target as HTMLInputElement).value
+        setSymbol((prevSymbol: string) => {
+            if(prevSymbol.length === 2 && sym.length === 3) {
+                return sym.toUpperCase() + "/" 
+            } else if (prevSymbol.length === 5 && sym.length === 4) {
+                return sym.toUpperCase().slice(0,3)
+            } else {
+                return sym.toUpperCase()
+            }
+        })
     }
 
     const handleValueChange = (setter: (value: any) => void, isNumType: boolean | null) => (e: React.SyntheticEvent): void => {
@@ -28,16 +48,23 @@ export default function Calculator({ }) {
     }
 
     const handleDirectionToggle = (e: React.SyntheticEvent) => {
-        setters.setDirection((prevState: StateType) => {
-            return { direction: prevState.direction === "LONG" ? "SHORT" : "LONG" }
+        setDirection((direction: string) => {
+            return direction === "LONG" ? "SHORT" : "LONG" 
         })
     }
+
+    useEffect(() => {
+
+        setRiskPercent(state.riskPercent)
+        setRatio(state.ratio)
+
+    }, [state.riskPercent, state.ratio])
 
     // EFFECT
     useEffect(() => {
         try {
-            const { symbol, accountValue, riskPercent, ratio, fillPrice, quantity, direction } = state;
-            const microLot = state.pipData[state.symbol].microLot
+            const {  accountValue } = state;
+            const microLot = state.pipData[symbol].microLot
 
             const singlePip = !!symbol.match(/JPY/gi) ? 0.01 : 0.0001
             const pipValue = (quantity / 1000) * microLot
@@ -73,61 +100,47 @@ export default function Calculator({ }) {
 
         }
 
-    }, [state])
-
+    }, [state.accountValue, symbol, quantity, fillPrice, riskPercent, ratio, direction])
 
     return (
-        <form className='sm:w-[66%] md:w-[75%] w-[95%] mx-auto p-4 rounded-sm bg-gray-100 shadow-sm shadow-gray-800' onSubmit={handleSubmit}>
-            <h1 className="text-4xl font-bold">Forex Position Calculator</h1>
-            <hr className='mb-2' />
+        <form className='h-fit mx-auto p-4 rounded-sm bg-gray-100 shadow-sm shadow-gray-800' onSubmit={handleSubmit}>
             <div className='grid sm:grid-cols-12 grid-cols-1 gap-2'>
-
                 <InputField
                     label="Symbol"
                     inputType='text'
-                    value={state.symbol}
-                    onChange={handleValueChange(setters.setSymbol, false)}
+                    value={symbol}
+                    onChange={handleSymbolChange}
                     args={{}}
-                    containerClassName='col-span-2'
+                    containerClassName='col-span-6'
                 />
-
                 <div className="grid grid-cols-3 gap-1 col-span-12">
                     <h3 className="bg-gray-600 text-gray-50 font-bold">Standard  Pip</h3>
                     <h3 className="bg-gray-600 text-gray-50 font-bold">Mini  Pip</h3>
                     <h3 className="bg-gray-600 text-gray-50 font-bold">Micro  Pip</h3>
-                    <div>{"$" + state.pipData?.[state.symbol]?.standardLot?.toFixed(2) ?? "--"}</div>
-                    <div>{"$" + state.pipData?.[state.symbol]?.miniLot?.toFixed(2) ?? "--"}</div>
-                    <div>{"$" + state.pipData?.[state.symbol]?.microLot?.toFixed(2) ?? "--"}</div>
+                    <div>${state.pipData?.[symbol]?.standardLot?.toFixed(2) ?? "--"}</div>
+                    <div>${state.pipData?.[symbol]?.miniLot?.toFixed(2) ?? "--"}</div>
+                    <div>${state.pipData?.[symbol]?.microLot?.toFixed(2) ?? "--"}</div>
                 </div>
-
                 <InputField
-                    label="Account Value (USD)"
-                    inputType="number"
-                    value={state.accountValue}
-                    onChange={handleValueChange(setters.setAccountValue, true)}
-                    args={{ step: 0.01 }}
-                    containerClassName="sm:col-span-4 col-span-12"
+                    label="Quantity"
+                    inputType='number'
+                    value={quantity}
+                    onChange={handleValueChange(setQuantity, true)}
+                    args={{ min: 0, step: 10_000 }}
+                    containerClassName="sm:col-span-6 col-span-12"
                 />
                 <InputField
                     label="Fill Price"
                     inputType='number'
-                    value={state.fillPrice}
-                    onChange={handleValueChange(setters.setFillPrice, true)}
-                    args={{min: 0, step: state.symbol.match(/JPY/gi) ? 0.001 : 0.00001}}
-                    containerClassName="sm:col-span-4 col-span-12"
-                />
-                <InputField
-                    label="Quantity"
-                    inputType='number'
-                    value={state.quantity}
-                    onChange={handleValueChange(setters.setQuantity, true)}
-                    args={{ min: 0, step: 10_000 }}
-                    containerClassName="sm:col-span-4 col-span-12"
+                    value={fillPrice}
+                    onChange={handleValueChange(setFillPrice, true)}
+                    args={{min: 0, step: symbol.match(/JPY/gi) ? 0.001 : 0.00001}}
+                    containerClassName="sm:col-span-6 col-span-12"
                 />
                 <InputField
                     label="Direction"
                     inputType='toggleButton'
-                    value={state.direction}
+                    value={direction}
                     onChange={handleDirectionToggle}
                     args={{
                         options: ["LONG", "SHORT"],
@@ -136,10 +149,10 @@ export default function Calculator({ }) {
                     containerClassName="sm:col-span-12 col-span-12 "
                 />
                 <InputField
-                    label={`Risk % ($${(state.accountValue * state.riskPercent/100).toFixed(2)})`}
+                    label={`Risk % ($${(state.accountValue * riskPercent/100).toFixed(2)})`}
                     inputType="number"
-                    value={state.riskPercent}
-                    onChange={handleValueChange(setters.setRiskPercent, true)}
+                    value={riskPercent}
+                    onChange={handleValueChange(setRiskPercent, true)}
                     args={{
                         min: 0,
                         max: 100,
@@ -148,11 +161,14 @@ export default function Calculator({ }) {
                     containerClassName="sm:col-span-6 col-span-12"
                 />
                 <InputField
-                    label={`Reward Ratio ($${(state.accountValue * (state.riskPercent * state.ratio/100)).toFixed(2)})`}
+                    label={`Reward Ratio ($${(state.accountValue * (riskPercent * ratio/100)).toFixed(2)})`}
                     inputType="number"
-                    value={state.ratio}
-                    onChange={handleValueChange(setters.setRatio, true)}
-                    args={{}}
+                    value={ratio}
+                    onChange={handleValueChange(setRatio, true)}
+                    args={{
+                        min:0,
+                        step: 0.05
+                    }}
                     containerClassName="sm:col-span-6 col-span-12"
                 />
 

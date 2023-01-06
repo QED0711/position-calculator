@@ -7,7 +7,8 @@ const INPUT_STYLE: string = "w-full m-1 p-1 text-lg rounded-sm shadow-sm shadow-
 // =============================== TYPES ===============================
 type LabelWrapperProps = {
     label: string,
-    className: string,
+    className?: string,
+    textClassName?: string,
     children: JSX.Element,
 }
 
@@ -18,15 +19,15 @@ type InputFieldProps = {
     onChange: (e: React.SyntheticEvent) => void,
     args?: { [key: string]: any },
     containerClassName?: string,
+    textClassName?: string
 }
 
 
-const LabelWrapper: React.FC<LabelWrapperProps> = ({ label, children, className }) => {
-
+const LabelWrapper: React.FC<LabelWrapperProps> = ({ label, children, className, textClassName}) => {
     return (
         <div className={className}>
             <label className={"text-left "}>
-                <h4 className='ml-1 text-sm text-gray-500'>{label}</h4>
+                <h4 className={`ml-1 text-sm  ${textClassName}`}>{label}</h4>
                 {children}
             </label>
         </div>
@@ -39,7 +40,8 @@ export default function InputField({
     value,
     onChange,
     args = {},
-    containerClassName = ""
+    containerClassName = "",
+    textClassName=""
 }: InputFieldProps) {
 
     // RENDERERS
@@ -56,7 +58,7 @@ export default function InputField({
     switch (inputType) {
         case "number":
             return (
-                <LabelWrapper label={label} className={containerClassName}>
+                <LabelWrapper label={label} className={containerClassName} textClassName={textClassName}>
                     <input
                         className={INPUT_STYLE}
                         type="number"
