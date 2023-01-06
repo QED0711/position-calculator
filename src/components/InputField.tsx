@@ -7,7 +7,7 @@ const INPUT_STYLE: string = "w-full m-1 p-1 text-lg rounded-sm shadow-sm shadow-
 // =============================== TYPES ===============================
 type LabelWrapperProps = {
     label: string,
-    className: string, 
+    className: string,
     children: JSX.Element,
 }
 
@@ -25,7 +25,7 @@ const LabelWrapper: React.FC<LabelWrapperProps> = ({ label, children, className 
 
     return (
         <div className={className}>
-            <label className={"text-left " }>
+            <label className={"text-left "}>
                 <h4 className='ml-1 text-sm text-gray-500'>{label}</h4>
                 {children}
             </label>
@@ -41,6 +41,17 @@ export default function InputField({
     args = {},
     containerClassName = ""
 }: InputFieldProps) {
+
+    // RENDERERS
+    const renderToggleButtons = (options: string[], colors: string[], value: string) => {
+        return options.map((option, i) => {
+            return (
+                <div key={option} className={`${value === option ? colors[i] : "bg-gray-200"} py-2 text-center select-none cursor-pointer`}>
+                    {option}
+                </div>
+            )
+        })
+    }
 
     switch (inputType) {
         case "number":
@@ -58,13 +69,25 @@ export default function InputField({
         case "text":
             return (
                 <LabelWrapper label={label} className={containerClassName}>
-                    <input 
+                    <input
                         className={INPUT_STYLE}
                         type="text"
                         onChange={onChange}
                         value={value}
                         {...args}
                     />
+                </LabelWrapper>
+            )
+        case "toggleButton":
+            return (
+                <LabelWrapper label={label} className={containerClassName}>
+                    <div
+                        className="rounded-sm shadow-sm shadow-gray-800"
+                        style={{ display: "grid", gridTemplateColumns: "1fr 1fr", width: "100%" }}
+                        onClick={onChange}
+                    >
+                        {renderToggleButtons(args.options, args.colors, value)}
+                    </div>
                 </LabelWrapper>
             )
         default:

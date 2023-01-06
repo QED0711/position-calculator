@@ -12,7 +12,7 @@ const state = {
     ratio: 2,
     fillPrice: 0,
     quantity: 0,
-
+    direction: "LONG",
 }
 
 export default state;
