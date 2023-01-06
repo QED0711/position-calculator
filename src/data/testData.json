@@ -1,0 +1,362 @@
+{
+    "AUD/CAD": {
+        "standardLot": 7.37365,
+        "miniLot": 0.73737,
+        "microLot": 0.07374
+    },
+    "AUD/CHF": {
+        "standardLot": 10.68251,
+        "miniLot": 1.06825,
+        "microLot": 0.10683
+    },
+    "AUD/JPY": {
+        "standardLot": 7.49327,
+        "miniLot": 0.74933,
+        "microLot": 0.07493
+    },
+    "AUD/NZD": {
+        "standardLot": 6.2287,
+        "miniLot": 0.62287,
+        "microLot": 0.06229
+    },
+    "AUD/SGD": {
+        "standardLot": 7.43865,
+        "miniLot": 0.74386,
+        "microLot": 0.07439
+    },
+    "AUD/USD": {
+        "standardLot": 10,
+        "miniLot": 1,
+        "microLot": 0.1
+    },
+    "CAD/CHF": {
+        "standardLot": 10.68251,
+        "miniLot": 1.06825,
+        "microLot": 0.10683
+    },
+    "CAD/JPY": {
+        "standardLot": 7.49327,
+        "miniLot": 0.74933,
+        "microLot": 0.07493
+    },
+    "CHF/JPY": {
+        "standardLot": 7.49327,
+        "miniLot": 0.74933,
+        "microLot": 0.07493
+    },
+    "CHF/SGD": {
+        "standardLot": 7.43865,
+        "miniLot": 0.74386,
+        "microLot": 0.07439
+    },
+    "EUR/AUD": {
+        "standardLot": 6.7585,
+        "miniLot": 0.67585,
+        "microLot": 0.06758
+    },
+    "EUR/CAD": {
+        "standardLot": 7.37365,
+        "miniLot": 0.73737,
+        "microLot": 0.07374
+    },
+    "EUR/CHF": {
+        "standardLot": 10.68251,
+        "miniLot": 1.06825,
+        "microLot": 0.10683
+    },
+    "EUR/CZK": {
+        "standardLot": 0.43755,
+        "miniLot": 0.04375,
+        "microLot": 0.00438
+    },
+    "EUR/GBP": {
+        "standardLot": 11.9143,
+        "miniLot": 1.19143,
+        "microLot": 0.11914
+    },
+    "EUR/HUF": {
+        "standardLot": 2.66037,
+        "miniLot": 0.26604,
+        "microLot": 0.0266
+    },
+    "EUR/JPY": {
+        "standardLot": 7.49327,
+        "miniLot": 0.74933,
+        "microLot": 0.07493
+    },
+    "EUR/MXN": {
+        "standardLot": 0.51774,
+        "miniLot": 0.05177,
+        "microLot": 0.00518
+    },
+    "EUR/NOK": {
+        "standardLot": 0.97587,
+        "miniLot": 0.09759,
+        "microLot": 0.00976
+    },
+    "EUR/NZD": {
+        "standardLot": 6.2287,
+        "miniLot": 0.62287,
+        "microLot": 0.06229
+    },
+    "EUR/PLN": {
+        "standardLot": 2.24847,
+        "miniLot": 0.22485,
+        "microLot": 0.02248
+    },
+    "EUR/SEK": {
+        "standardLot": 0.93606,
+        "miniLot": 0.09361,
+        "microLot": 0.00936
+    },
+    "EUR/SGD": {
+        "standardLot": 7.43865,
+        "miniLot": 0.74386,
+        "microLot": 0.07439
+    },
+    "EUR/TRY": {
+        "standardLot": 0.53313,
+        "miniLot": 0.05331,
+        "microLot": 0.00533
+    },
+    "EUR/USD": {
+        "standardLot": 10,
+        "miniLot": 1,
+        "microLot": 0.1
+    },
+    "EUR/ZAR": {
+        "standardLot": 0.58284,
+        "miniLot": 0.05828,
+        "microLot": 0.00583
+    },
+    "GBP/AUD": {
+        "standardLot": 6.7585,
+        "miniLot": 0.67585,
+        "microLot": 0.06758
+    },
+    "GBP/CAD": {
+        "standardLot": 7.37365,
+        "miniLot": 0.73737,
+        "microLot": 0.07374
+    },
+    "GBP/CHF": {
+        "standardLot": 10.68251,
+        "miniLot": 1.06825,
+        "microLot": 0.10683
+    },
+    "GBP/JPY": {
+        "standardLot": 7.49327,
+        "miniLot": 0.74933,
+        "microLot": 0.07493
+    },
+    "GBP/MXN": {
+        "standardLot": 0.51774,
+        "miniLot": 0.05177,
+        "microLot": 0.00518
+    },
+    "GBP/NOK": {
+        "standardLot": 0.97587,
+        "miniLot": 0.09759,
+        "microLot": 0.00976
+    },
+    "GBP/NZD": {
+        "standardLot": 6.2287,
+        "miniLot": 0.62287,
+        "microLot": 0.06229
+    },
+    "GBP/SEK": {
+        "standardLot": 0.93606,
+        "miniLot": 0.09361,
+        "microLot": 0.00936
+    },
+    "GBP/SGD": {
+        "standardLot": 7.43865,
+        "miniLot": 0.74386,
+        "microLot": 0.07439
+    },
+    "GBP/TRY": {
+        "standardLot": 0.53313,
+        "miniLot": 0.05331,
+        "microLot": 0.00533
+    },
+    "GBP/USD": {
+        "standardLot": 10,
+        "miniLot": 1,
+        "microLot": 0.1
+    },
+    "NOK/JPY": {
+        "standardLot": 7.49327,
+        "miniLot": 0.74933,
+        "microLot": 0.07493
+    },
+    "NOK/SEK": {
+        "standardLot": 0.93606,
+        "miniLot": 0.09361,
+        "microLot": 0.00936
+    },
+    "NZD/CAD": {
+        "standardLot": 7.37365,
+        "miniLot": 0.73737,
+        "microLot": 0.07374
+    },
+    "NZD/CHF": {
+        "standardLot": 10.68251,
+        "miniLot": 1.06825,
+        "microLot": 0.10683
+    },
+    "NZD/JPY": {
+        "standardLot": 7.49327,
+        "miniLot": 0.74933,
+        "microLot": 0.07493
+    },
+    "NZD/USD": {
+        "standardLot": 10,
+        "miniLot": 1,
+        "microLot": 0.1
+    },
+    "SEK/JPY": {
+        "standardLot": 7.49327,
+        "miniLot": 0.74933,
+        "microLot": 0.07493
+    },
+    "SGD/JPY": {
+        "standardLot": 7.49327,
+        "miniLot": 0.74933,
+        "microLot": 0.07493
+    },
+    "USD/CAD": {
+        "standardLot": 7.37365,
+        "miniLot": 0.73737,
+        "microLot": 0.07374
+    },
+    "USD/CHF": {
+        "standardLot": 10.68251,
+        "miniLot": 1.06825,
+        "microLot": 0.10683
+    },
+    "USD/CNH": {
+        "standardLot": 1.45192,
+        "miniLot": 0.14519,
+        "microLot": 0.01452
+    },
+    "USD/CZK": {
+        "standardLot": 0.43755,
+        "miniLot": 0.04375,
+        "microLot": 0.00438
+    },
+    "USD/HUF": {
+        "standardLot": 2.66037,
+        "miniLot": 0.26604,
+        "microLot": 0.0266
+    },
+    "USD/JPY": {
+        "standardLot": 7.49327,
+        "miniLot": 0.74933,
+        "microLot": 0.07493
+    },
+    "USD/MXN": {
+        "standardLot": 0.51774,
+        "miniLot": 0.05177,
+        "microLot": 0.00518
+    },
+    "USD/NOK": {
+        "standardLot": 0.97587,
+        "miniLot": 0.09759,
+        "microLot": 0.00976
+    },
+    "USD/PLN": {
+        "standardLot": 2.24847,
+        "miniLot": 0.22485,
+        "microLot": 0.02248
+    },
+    "USD/RUB": {
+        "standardLot": 0.12009,
+        "miniLot": 0.01201,
+        "microLot": 0.0012
+    },
+    "USD/SEK": {
+        "standardLot": 0.93606,
+        "miniLot": 0.09361,
+        "microLot": 0.00936
+    },
+    "USD/SGD": {
+        "standardLot": 7.43865,
+        "miniLot": 0.74386,
+        "microLot": 0.07439
+    },
+    "USD/THB": {
+        "standardLot": 0.29374,
+        "miniLot": 0.02937,
+        "microLot": 0.00294
+    },
+    "USD/TRY": {
+        "standardLot": 0.53313,
+        "miniLot": 0.05331,
+        "microLot": 0.00533
+    },
+    "USD/ZAR": {
+        "standardLot": 0.58284,
+        "miniLot": 0.05828,
+        "microLot": 0.00583
+    },
+    "XAG/AUD": {
+        "standardLot": 675.85,
+        "miniLot": 67.585,
+        "microLot": 6.7585
+    },
+    "XAG/EUR": {
+        "standardLot": 1,
+        "miniLot": 105.234,
+        "microLot": 10.5234
+    },
+    "XAG/USD": {
+        "standardLot": 1,
+        "miniLot": 100,
+        "microLot": 10
+    },
+    "XAU/AUD": {
+        "standardLot": 675.85,
+        "miniLot": 67.585,
+        "microLot": 6.7585
+    },
+    "XAU/CHF": {
+        "standardLot": 1,
+        "miniLot": 106.82505,
+        "microLot": 10.68251
+    },
+    "XAU/EUR": {
+        "standardLot": 1,
+        "miniLot": 105.234,
+        "microLot": 10.5234
+    },
+    "XAU/GBP": {
+        "standardLot": 1,
+        "miniLot": 119.143,
+        "microLot": 11.9143
+    },
+    "XAU/JPY": {
+        "standardLot": 7.49327,
+        "miniLot": 0.74933,
+        "microLot": 0.07493
+    },
+    "XAU/USD": {
+        "standardLot": 1,
+        "miniLot": 100,
+        "microLot": 10
+    },
+    "XPD/USD": {
+        "standardLot": 1,
+        "miniLot": 100,
+        "microLot": 10
+    },
+    "XPT/USD": {
+        "standardLot": 1,
+        "miniLot": 100,
+        "microLot": 10
+    },
+    "ZAR/JPY": {
+        "standardLot": 7.49327,
+        "miniLot": 0.74933,
+        "microLot": 0.07493
+    }
+}
