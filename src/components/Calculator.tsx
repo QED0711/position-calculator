@@ -1,25 +1,30 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-// ==================================== TYPES ====================================
-import { StateType } from '../types';
-
 // ==================================== STATE ====================================
 import { MainContext } from '../state/main/mainProvider';
 import InputField from './InputField';
 
-// ==================================== STYLES ====================================
-export default function Calculator({ }) {
+// ==================================== TYPES ====================================
+import { StateType } from '../types';
+
+type CalculatorProps = {
+    symbol: string,
+    cardIndex: number
+}
+export default function Calculator({
+    symbol="",
+    cardIndex
+ }: CalculatorProps) {
+
 
     // STATE
     const { state, setters }: StateType = useContext(MainContext)
     const [targets, setTargets] = useState({ stoploss: "", takeProfit: "" , pipsToRisk: 0, pipsToProfit: 0})
-    const [symbol, setSymbol] = useState<string>("")
-    const [quantity, setQuantity] = useState(0)
+    const [quantity, setQuantity] = useState(state.quantity)
     const [riskPercent, setRiskPercent] = useState(state.riskPercent)
     const [ratio, setRatio] = useState(state.ratio)
     const [fillPrice, setFillPrice] = useState(0)
     const [direction, setDirection] = useState("LONG")
-
 
     // EVENTS
     const handleSubmit = (e: React.SyntheticEvent): void => {
@@ -30,15 +35,7 @@ export default function Calculator({ }) {
 
     const handleSymbolChange = (e: React.SyntheticEvent) => {
         const sym = (e.target as HTMLInputElement).value
-        setSymbol((prevSymbol: string) => {
-            if(prevSymbol.length === 2 && sym.length === 3) {
-                return sym.toUpperCase() + "/" 
-            } else if (prevSymbol.length === 5 && sym.length === 4) {
-                return sym.toUpperCase().slice(0,3)
-            } else {
-                return sym.toUpperCase()
-            }
-        })
+        setters.setSymbolAtIndex(sym, cardIndex)
     }
 
     const handleValueChange = (setter: (value: any) => void, isNumType: boolean | null) => (e: React.SyntheticEvent): void => {
@@ -54,11 +51,10 @@ export default function Calculator({ }) {
     }
 
     useEffect(() => {
-
         setRiskPercent(state.riskPercent)
         setRatio(state.ratio)
-
-    }, [state.riskPercent, state.ratio])
+        setQuantity(state.quantity)
+    }, [state.riskPercent, state.ratio, state.quantity])
 
     // EFFECT
     useEffect(() => {
@@ -103,7 +99,10 @@ export default function Calculator({ }) {
     }, [state.accountValue, symbol, quantity, fillPrice, riskPercent, ratio, direction])
 
     return (
-        <form className='h-fit mx-auto p-4 rounded-sm bg-gray-100 shadow-sm shadow-gray-800' onSubmit={handleSubmit}>
+        <form className='relative h-fit mx-auto p-4 rounded-sm bg-gray-100 shadow-sm shadow-gray-800' onSubmit={handleSubmit}>
+
+            <div className='absolute top-2 right-2 cursor-pointer' onClick={() => {setters.removeSymbolAtIndex(cardIndex)}}>X</div>
+
             <div className='grid sm:grid-cols-12 grid-cols-1 gap-2'>
                 <InputField
                     label="Symbol"

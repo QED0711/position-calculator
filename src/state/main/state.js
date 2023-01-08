@@ -9,7 +9,9 @@ const state = {
     accountValue: 0,
     riskPercent: 0,
     ratio: 2,
+    quantity: 0,
 
+    symbols: ["",],
     numPanels: 2
 }
 

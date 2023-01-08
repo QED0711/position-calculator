@@ -19,7 +19,7 @@ export default function Banner({}){
                 }}
            /> 
            <InputField
-                label={"Risk %"}
+                label={"Default Risk %"}
                 value={state.riskPercent}
                 inputType="number"
                 onChange={(e: React.SyntheticEvent) => setters.setRiskPercent(parseFloat((e.target as HTMLInputElement).value))}
@@ -30,7 +30,7 @@ export default function Banner({}){
                 }}
            /> 
            <InputField
-                label={"Reward Ratio"}
+                label={"Default Reward Ratio"}
                 value={state.ratio}
                 inputType="number"
                 onChange={(e: React.SyntheticEvent) => setters.setRatio(parseFloat((e.target as HTMLInputElement).value))}
@@ -41,14 +41,14 @@ export default function Banner({}){
                 }}
            /> 
            <InputField
-                label={"Num Panels"}
-                value={state.numPanels}
+                label={"Default Quantity"}
+                value={state.quantity}
                 inputType="number"
-                onChange={(e: React.SyntheticEvent) => setters.setNumPanels(parseFloat((e.target as HTMLInputElement).value))}
+                onChange={(e: React.SyntheticEvent) => setters.setQuantity(parseFloat((e.target as HTMLInputElement).value))}
                 textClassName={"text-gray-50"}
                 args={{
-                    min: 1,
-                    max: 6,
+                    min: 0,
+                    step: 10_000
                 }}
            /> 
         </div>
